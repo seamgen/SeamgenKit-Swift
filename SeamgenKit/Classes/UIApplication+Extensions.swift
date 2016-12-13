@@ -48,7 +48,7 @@ public extension UIApplication {
     public func launchSettingsApp() -> Bool {
         guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return false }
         
-        if #available(iOS 10.0, *) {
+        if #available(iOS 10.0, tvOS 9.0, *) {
             let result = canOpenURL(url)
             open(url, options: [:], completionHandler: nil)
             return result
@@ -61,7 +61,7 @@ public extension UIApplication {
     public func dial(_ phoneNumber: String) -> Bool {
         guard let url = URL(phoneCallTo: phoneNumber) else { return false }
         
-        if #available(iOS 10.0, *) {
+        if #available(iOS 10.0, tvOS 9.0, *) {
             let result = canOpenURL(url)
             open(url, options: [:], completionHandler: nil)
             return result
@@ -74,7 +74,7 @@ public extension UIApplication {
     public func composeSMS(to phoneNumber: String? = nil) -> Bool {
         guard let url = URL(smsTo: phoneNumber) else { return false }
         
-        if #available(iOS 10.0, *) {
+        if #available(iOS 10.0, tvOS 9.0, *) {
             let result = canOpenURL(url)
             open(url, options: [:], completionHandler: nil)
             return result
@@ -87,7 +87,7 @@ public extension UIApplication {
     public func composeEmail(to recipient: String, subject: String? = nil, body: String? = nil, cc: String? = nil) -> Bool {
         guard let url = URL(emailTo: recipient, subject: subject, body: body, cc: cc) else { return false }
         
-        if #available(iOS 10.0, *) {
+        if #available(iOS 10.0, tvOS 9.0, *) {
             let result = canOpenURL(url)
             open(url, options: [:], completionHandler: nil)
             return result
