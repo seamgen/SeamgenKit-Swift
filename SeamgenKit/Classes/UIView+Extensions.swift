@@ -18,9 +18,4 @@ extension UIView {
     public func addSubviews(_ views: [UIView]) {
         views.forEach { addSubview($0) }
     }
-    
-    public var isVisible: Bool {
-        get { return !isHidden }
-        set { isHidden = !newValue }
-    }
 }
