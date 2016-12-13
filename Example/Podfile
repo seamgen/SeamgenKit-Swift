@@ -1,0 +1,6 @@
+use_frameworks!
+target 'SeamgenKit_Tests' do
+  pod 'SeamgenKit', :path => '../'
+  
+  
+end
