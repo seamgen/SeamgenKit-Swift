@@ -1,15 +1,16 @@
 # SeamgenKit
 
-[![CI Status](http://img.shields.io/travis/Sam Gerardi/SeamgenKit.svg?style=flat)](https://travis-ci.org/Sam Gerardi/SeamgenKit)
-[![Version](https://img.shields.io/cocoapods/v/SeamgenKit.svg?style=flat)](http://cocoapods.org/pods/SeamgenKit)
-[![License](https://img.shields.io/cocoapods/l/SeamgenKit.svg?style=flat)](http://cocoapods.org/pods/SeamgenKit)
-[![Platform](https://img.shields.io/cocoapods/p/SeamgenKit.svg?style=flat)](http://cocoapods.org/pods/SeamgenKit)
+[![CI Status](https://img.shields.io/badge/Swift-3.0-orange.svg)](https://swift.org)
 
-## Example
+SeamgenKit provides a set of extension methods and helper classes for making iOS development using Swift easier.
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+## Usage
+
+Please view the source code for more information.
 
 ## Requirements
+
+iOS 9.3 or later.
 
 ## Installation
 
@@ -17,7 +18,7 @@ SeamgenKit is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "SeamgenKit"
+pod 'SeamgenKit', :git => 'https://github.com/seamgen/SeamgenKit-Swift.git'
 ```
 
 ## Author
