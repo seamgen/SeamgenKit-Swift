@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SeamgenKit'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'A collection of Swift utilities created by Seamgen'
 
 # This description is used to generate tags and improve search results.
@@ -18,26 +18,17 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-A collection of Swift utilities created by Seamgen
+A collection of Swift utilities created by Seamgen.
                        DESC
 
-  s.homepage         = 'https://github.com/sgerardi/SeamgenKit'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'https://github.com/seamgen/SeamgenKit-Swift'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Sam Gerardi' => 'sgerardi@seamgen.com' }
-  s.source           = { :git => 'https://github.com/sgerardi/SeamgenKit.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => 'https://github.com/seamgen/SeamgenKit-Swift.git', :tag => s.version.to_s }
+  s.social_media_url = 'http://www.seamgen.com'
 
   s.ios.deployment_target = '9.3'
-  s.tvos.deployment_target = '10.0'
 
   s.source_files = 'SeamgenKit/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'SeamgenKit' => ['SeamgenKit/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'Foundation', 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
