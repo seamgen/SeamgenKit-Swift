@@ -57,6 +57,11 @@ public extension UIApplication {
         }
     }
     
+    /// Dials a phone number immediately.
+    ///
+    /// - Parameter phoneNumber: The phone number to dial
+    ///
+    /// - Returns: True if the phone number was dialed.
     @discardableResult
     public func dial(_ phoneNumber: String) -> Bool {
         guard let url = URL(phoneCallTo: phoneNumber) else { return false }
@@ -70,6 +75,12 @@ public extension UIApplication {
         }
     }
     
+    
+    /// Navigates to the system messaging app (iMessage) to compose an SMS or iMessage.
+    ///
+    /// - Parameter phoneNumber: The recipient of the message.
+    ///
+    /// - Returns: True if the compose view was presented.
     @discardableResult
     public func composeSMS(to phoneNumber: String? = nil) -> Bool {
         guard let url = URL(smsTo: phoneNumber) else { return false }
@@ -83,6 +94,15 @@ public extension UIApplication {
         }
     }
     
+    /// Navigates to the system mail app (Mail) to compose an email.
+    ///
+    /// - Parameters:
+    ///   - recipient:  The recipient of the email.
+    ///   - subject:    The subject.
+    ///   - body:       The message body.
+    ///   - cc:         CC of the email.
+    ///
+    /// - Returns: True if the compose view was presented.
     @discardableResult
     public func composeEmail(to recipient: String, subject: String? = nil, body: String? = nil, cc: String? = nil) -> Bool {
         guard let url = URL(emailTo: recipient, subject: subject, body: body, cc: cc) else { return false }
