@@ -29,7 +29,7 @@ extension UIApplication {
     
     /// The bundle identifier from the info.plist (CFBundleIdentifierKey)
     public var bundleIdentifier: String {
-        return Bundle.main.object(forInfoDictionaryKey: kCFBundleIdentifierKey as String) as! String
+        return Bundle.main.bundleIdentifier!
     }
     
     /// True if App Transport Security is enabled.
