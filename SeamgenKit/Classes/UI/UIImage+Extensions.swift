@@ -17,7 +17,7 @@ extension UIImage {
     /// - Parameters:
     ///   - color:  The fill color of the image.
     ///   - size:   The size of the image.
-    public convenience init(color: UIColor, size: CGSize) {
+    public convenience init(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         
         color.setFill()
