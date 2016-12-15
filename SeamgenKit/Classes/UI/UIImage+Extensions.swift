@@ -118,7 +118,6 @@ public enum UIImageRotation {
 
 extension UIImage {
     
-    
     /// Returns the image rotated to a given degree.
     ///
     /// - Parameters:
