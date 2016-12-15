@@ -28,6 +28,19 @@ extension UIImage {
         
         self.init(cgImage: image.cgImage!)
     }
+    
+    /// Writes the image as a JPEG file to disk.
+    ///
+    /// - Parameters:
+    ///   - url: The location to save the image.
+    ///   - compressionQuality: The quality of the resulting JPEG image, expressed as a value from 0.0 to 1.0. The value 0.0 represents the maximum compression (or lowest quality) while the value 1.0 represents the least compression (or best quality).
+    ///
+    ///   - options: Data writing options.
+    /// - Throws: See UIImageJPEGRepresentation
+    public func writeJPEG(to url: URL, compressionQuality: CGFloat = 1.0, options: Data.WritingOptions = []) throws {
+        let data = UIImageJPEGRepresentation(self, compressionQuality)!
+        try data.write(to: url, options: options)
+    }
 }
 
 
