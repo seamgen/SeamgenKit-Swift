@@ -60,7 +60,7 @@ extension UIImage {
         
         draw(in: CGRect(origin: .zero, size: size))
         
-        return UIGraphicsGetImageFromCurrentImageContext()!
+        return UIGraphicsGetImageFromCurrentImageContext() ?? self
     }
     
     /// Scales the image to fit within a given size while maintaining the aspect ratio.
@@ -143,20 +143,20 @@ extension UIImage {
         UIGraphicsBeginImageContext(rect.size)
         defer { UIGraphicsEndImageContext() }
         
-        guard let context = UIGraphicsGetCurrentContext() else { fatalError("Failed to create graphics context.") }
-        guard let cgImage = cgImage else { fatalError("Failed to get CGImage from \(self)") }
+        guard let context = UIGraphicsGetCurrentContext() else { return self }
+        guard let cgImage = cgImage else { return self }
         
         context.translateBy(x: rect.size.width / 2.0, y: rect.size.height / 2.0)
         context.rotate(by: radians)
         context.scaleBy(x: flipped ? -1 : 1, y: -1.0)
         context.draw(cgImage, in: CGRect(x: -size.width / 2, y: -size.height / 2, width: size.width, height: size.height))
         
-        return UIGraphicsGetImageFromCurrentImageContext()!
+        return UIGraphicsGetImageFromCurrentImageContext() ?? self
     }
     
     @available(iOS 10.0, *)
     private func iOS10_rotated(_ rotation: UIImageRotation, flipped: Bool = false) -> UIImage {
-        guard let cgImage = self.cgImage else { fatalError("Failed to get CGImage from \(self)") }
+        guard let cgImage = self.cgImage else { return self }
         
         let radians = CGFloat(rotation.radians)
         let transform = CGAffineTransform(rotationAngle: radians)
