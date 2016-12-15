@@ -175,3 +175,32 @@ extension UIImage {
     }
 }
 
+
+// MARK: - Colorization
+
+extension UIImage {
+    
+    /// Returns the image filled with a given color while maintaining the alpha channel.
+    ///
+    /// - Parameter color: The color that will fill the image.
+    /// - Returns: The colorized image.
+    public func filled(with color: UIColor) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        defer { UIGraphicsEndImageContext() }
+        
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        
+        guard let context = UIGraphicsGetCurrentContext() else { return self }
+        context.setFillColor(color.cgColor)
+        context.translateBy(x: 0, y: size.height)
+        context.scaleBy(x: 1.0, y: -1.0);
+        context.setBlendMode(CGBlendMode.normal)
+        
+        guard let mask = self.cgImage else { return self }
+        context.clip(to: rect, mask: mask)
+        context.fill(rect)
+        
+        return UIGraphicsGetImageFromCurrentImageContext() ?? self
+    }
+}
+
