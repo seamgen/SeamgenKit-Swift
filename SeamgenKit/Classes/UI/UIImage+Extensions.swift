@@ -52,7 +52,7 @@ extension UIImage {
     ///   - size:       The new size of the image.
     ///   - hasAlpha:   Include an alpha channel.
     /// - Returns: The scaled image.
-    func scaledTo(size: CGSize, hasAlpha: Bool = false) -> UIImage {
+    public func scaledTo(size: CGSize, hasAlpha: Bool = false) -> UIImage {
         let image = self
         let scale: CGFloat = image.scale
         
@@ -71,7 +71,7 @@ extension UIImage {
     ///   - size: The maximum size of the scaled image.
     ///   - hasAlpha: Include an alpha channel.
     /// - Returns: The scaled image.
-    func scaledTo(fitSize size: CGSize, hasAlpha: Bool = false) -> UIImage {
+    public func scaledTo(fitSize size: CGSize, hasAlpha: Bool = false) -> UIImage {
         let newSize = self.size.aspectFit(to: size)
         return self.scaledTo(size: newSize)
     }
@@ -82,7 +82,7 @@ extension UIImage {
     ///   - size: The minimum size of the scaled image.
     ///   - hasAlpha: Include an alpha channel.
     /// - Returns: The scaled image.
-    func scaledTo(fillSize size: CGSize, hasAlpha: Bool = false) -> UIImage {
+    public func scaledTo(fillSize size: CGSize, hasAlpha: Bool = false) -> UIImage {
         let newSize = self.size.aspectFill(to: size)
         return self.scaledTo(size: newSize)
     }
