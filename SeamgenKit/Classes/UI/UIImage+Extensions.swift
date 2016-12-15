@@ -44,6 +44,8 @@ extension UIImage {
 }
 
 
+// MARK: - Scaling
+
 extension UIImage {
     
     /// Scales the image to a given size.
@@ -53,16 +55,12 @@ extension UIImage {
     ///   - hasAlpha:   Include an alpha channel.
     /// - Returns: The scaled image.
     public func scaledTo(size: CGSize, hasAlpha: Bool = false) -> UIImage {
-        let image = self
-        let scale: CGFloat = image.scale
-        
         UIGraphicsBeginImageContextWithOptions(size, !hasAlpha, scale)
-        image.draw(in: CGRect(origin: .zero, size: size))
+        defer { UIGraphicsEndImageContext() }
         
-        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+        draw(in: CGRect(origin: .zero, size: size))
         
-        return scaledImage!
+        return UIGraphicsGetImageFromCurrentImageContext()!
     }
     
     /// Scales the image to fit within a given size while maintaining the aspect ratio.
