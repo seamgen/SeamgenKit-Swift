@@ -31,15 +31,12 @@ extension UIDevice {
             
             do {
                 try context.canEvaluatePolicy(policy, error: nil)
-                // Evaluate the policy...
                 context.evaluatePolicy(policy, localizedReason: localizedReason) { success, error in
-                    // Policy has been evaluated.
                     DispatchQueue.main.async {
                         completion(success, error)
                     }
                 }
             } catch {
-                // An error ocurred.
                 DispatchQueue.main.async {
                     completion(false, error)
                 }
