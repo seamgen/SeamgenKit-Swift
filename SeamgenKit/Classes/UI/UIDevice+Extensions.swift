@@ -30,21 +30,13 @@ extension UIDevice {
             let policy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics
             
             do {
-                if try context.canEvaluatePolicy(policy, error: nil) {
-                    // Evaluate the policy...
-                    context.evaluatePolicy(policy, localizedReason: localizedReason) { success, error in
-                        // Policy has been evaluated.
-                        DispatchQueue.main.async {
-                            completion(success, error)
-                        }
-                        return
-                    }
-                } else {
-                    // Did not pass evaluation.
+                try context.canEvaluatePolicy(policy, error: nil)
+                // Evaluate the policy...
+                context.evaluatePolicy(policy, localizedReason: localizedReason) { success, error in
+                    // Policy has been evaluated.
                     DispatchQueue.main.async {
-                        completion(false, nil)
+                        completion(success, error)
                     }
-                    return
                 }
             } catch {
                 // An error ocurred.
