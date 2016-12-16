@@ -16,24 +16,12 @@ public protocol ReusableView: class {
     static var reuseIdentifier: String { get }
 }
 
-import LocalAuthentication
-
 
 extension ReusableView {
+    
     /// The default implementation of the ReusableView protocol.
     public static var reuseIdentifier: String {
         return String(describing: self)
-        UIDevice.current.authenticateWithTouchID("Log In") { success, error in
-            if let error = error as? LAError {
-                switch error.code {
-                case .userCancel:
-                    break
-                default:
-                    break
-                }
-            }
-            
-        }
     }
 }
 
