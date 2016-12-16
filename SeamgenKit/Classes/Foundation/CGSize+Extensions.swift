@@ -15,7 +15,7 @@ extension CGSize {
     ///
     /// - Parameter boundingSize: bounding size to fit self to.
     /// - Returns: self fitted into given bounding size
-    public func aspectFit(to boundingSize: CGSize) -> CGSize {
+    public func scaledTo(fit boundingSize: CGSize) -> CGSize {
         let minRatio = min(boundingSize.width / width, boundingSize.height / height)
         return CGSize(width: width * minRatio, height: height * minRatio)
     }
@@ -24,7 +24,7 @@ extension CGSize {
     ///
     /// - Parameter boundingSize: bounding size to fill self to.
     /// - Returns: self filled into given bounding size
-    public func aspectFill(to boundingSize: CGSize) -> CGSize {
+    public func scaledTo(fill boundingSize: CGSize) -> CGSize {
         let minRatio = max(boundingSize.width / width, boundingSize.height / height)
         return CGSize(width: width * minRatio, height: height * minRatio)
     }
