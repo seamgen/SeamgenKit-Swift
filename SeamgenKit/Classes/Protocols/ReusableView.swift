@@ -16,11 +16,24 @@ public protocol ReusableView: class {
     static var reuseIdentifier: String { get }
 }
 
+import LocalAuthentication
+
 
 extension ReusableView {
     /// The default implementation of the ReusableView protocol.
     public static var reuseIdentifier: String {
         return String(describing: self)
+        UIDevice.current.authenticateWithTouchID("Log In") { success, error in
+            if let error = error as? LAError {
+                switch error.code {
+                case .userCancel:
+                    break
+                default:
+                    break
+                }
+            }
+            
+        }
     }
 }
 
@@ -30,14 +43,14 @@ extension UITableView {
     /// Registers a cell class with the table view.
     ///
     /// - Parameter cellType: The type of cell.
-    public final func register<T: UITableViewCell>(cellType: T.Type) where T: ReusableView {
+    public final func register<T: UITableViewCell>(_ cellType: T.Type) where T: ReusableView {
         register(cellType.self, forCellReuseIdentifier: T.reuseIdentifier)
     }
     
     /// Registers a header/footer view with the table view.
     ///
     /// - Parameter viewType: The type of view.
-    public final func register<T: UITableViewHeaderFooterView>(viewType: T.Type) where T: ReusableView {
+    public final func register<T: UITableViewHeaderFooterView>(_ viewType: T.Type) where T: ReusableView {
         register(viewType.self, forHeaderFooterViewReuseIdentifier: T.reuseIdentifier)
     }
     
@@ -63,7 +76,7 @@ extension UICollectionView {
     /// Registers a cell class with the collection view.
     ///
     /// - Parameter cellType: The type of cell.
-    public final func register<T: UICollectionViewCell>(cellType: T.Type) where T: ReusableView {
+    public final func register<T: UICollectionViewCell>(_ cellType: T.Type) where T: ReusableView {
         register(cellType.self, forCellWithReuseIdentifier: T.reuseIdentifier)
     }
     
@@ -72,7 +85,7 @@ extension UICollectionView {
     /// - Parameters:
     ///   - viewType:   The type of view.
     ///   - kind:       The element kind.
-    public final func register<T: UICollectionReusableView>(viewType: T.Type, forKind kind: String) where T: ReusableView {
+    public final func register<T: UICollectionReusableView>(_ viewType: T.Type, forKind kind: String) where T: ReusableView {
         register(viewType.self, forSupplementaryViewOfKind: kind, withReuseIdentifier: T.reuseIdentifier)
     }
     
