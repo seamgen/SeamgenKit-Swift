@@ -26,7 +26,7 @@ extension UIImage {
                             borderWidth: CGFloat = 0,
                             cornerRadius: CGFloat = 0,
                             corners: UIRectCorner? = nil,
-                            size: CGSize)
+                            size: CGSize = CGSize(width: 1, height: 1))
     {
         let inset = max(0, borderWidth / 2)
         let rect = CGRect(origin: .zero, size: size).insetBy(dx: inset, dy: inset)
