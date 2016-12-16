@@ -49,6 +49,15 @@ let fill = size.scaledTo(fill: CGSize(width: 100, height: 100) // returns { w: 2
 ```
 
 
+### DispatchTime
+
+Simplify delayed async dispatch by making `DispatchTime` conform to `ExpressibleByIntegerLiteral` and `ExpressibleByFloatLiteral`
+
+```swift
+DispatchQueue.main.asyncAfter(deadline: 5) { ... } // Executes after 5 seconds.
+```
+
+
 ### Floating Point
 
 Convert any `FloatingPoint` value to and from radians and degrees:
@@ -286,7 +295,13 @@ Create a UIImage from a color:
 
 ```swift
 let image = UIImage(color: .red) // returns a 1x1 pixel red image.
-let image = UIImage(color: .red, size: CGSize(width: 100, height: 100)) // returns a 100x100 red image.
+let image = UIImage(color: .red, size: CGSize(width: 100, height: 100)) // returns a 100x100
+
+// More options: 
+let image = UIImage(color: .red, 
+					borderColor: .blue, borderWidth: 2, 
+					cornerRadius: 8, corners: nil,
+					size: CGSize(width: 100, height: 100))
 ```
 
 Save an image to disk (as a JPEG)
