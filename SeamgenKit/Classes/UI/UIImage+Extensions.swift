@@ -70,7 +70,7 @@ extension UIImage {
     ///   - hasAlpha: Include an alpha channel.
     /// - Returns: The scaled image.
     public func scaledTo(fitSize size: CGSize, hasAlpha: Bool = false) -> UIImage {
-        let newSize = self.size.aspectFit(to: size)
+        let newSize = self.size.scaledTo(fit: size)
         return self.scaledTo(size: newSize)
     }
     
@@ -81,7 +81,7 @@ extension UIImage {
     ///   - hasAlpha: Include an alpha channel.
     /// - Returns: The scaled image.
     public func scaledTo(fillSize size: CGSize, hasAlpha: Bool = false) -> UIImage {
-        let newSize = self.size.aspectFill(to: size)
+        let newSize = self.size.scaledTo(fill: size)
         return self.scaledTo(size: newSize)
     }
 }
