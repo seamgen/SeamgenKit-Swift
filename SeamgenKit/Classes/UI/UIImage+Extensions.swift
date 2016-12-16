@@ -11,20 +11,54 @@ import AVFoundation
 
 
 extension UIImage {
-    
-    /// Initializes the image with a given fill color.
+
+    /// Creates an image from a color.
     ///
     /// - Parameters:
-    ///   - color:  The fill color of the image.
-    ///   - size:   The size of the image.
-    public convenience init(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
-        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+    ///   - color:          The fill color.
+    ///   - borderColor:    The border color (only applied if borderWidth > 0)
+    ///   - borderWidth:    The width of the border (must be > 0).
+    ///   - cornerRadius:   The corner radius (must be > 0)
+    ///   - corners:        The corners that will be rounded (pass nil to round all of the corners)
+    ///   - size:           The size of the output image.
+    public convenience init(color: UIColor,
+                            borderColor: UIColor? = nil,
+                            borderWidth: CGFloat = 0,
+                            cornerRadius: CGFloat = 0,
+                            corners: UIRectCorner? = nil,
+                            size: CGSize)
+    {
+        let inset = max(0, borderWidth / 2)
+        let rect = CGRect(origin: .zero, size: size).insetBy(dx: inset, dy: inset)
         
-        color.setFill()
-        UIRectFill(CGRect(origin: .zero, size: size))
+        let path: CGPath = {
+            let radius = max(0, cornerRadius)
+            
+            if radius > 0 {
+                if let corners = corners {
+                    return UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius)).cgPath
+                } else {
+                    return UIBezierPath(roundedRect: rect, cornerRadius: radius).cgPath
+                }
+            }
+            
+            return UIBezierPath(rect: rect).cgPath
+        }()
+        
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        defer { UIGraphicsEndImageContext() }
+        
+        let context = UIGraphicsGetCurrentContext()!
+        context.setFillColor(color.cgColor)
+        if let borderColor = borderColor?.cgColor, borderWidth > 0 {
+            context.setStrokeColor(borderColor)
+            context.setLineWidth(borderWidth)
+            context.setLineCap(.square)
+        }
+        context.addPath(path)
+        context.drawPath(using: .fillStroke)
         
         let image = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
         
         self.init(cgImage: image.cgImage!)
     }
