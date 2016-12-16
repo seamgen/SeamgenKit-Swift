@@ -4,6 +4,10 @@
 
 SeamgenKit provides a set of extension methods and helper classes for making iOS development using Swift easier.
 
+Other great Cocoapods:
+
+* [SwiftDate](https://cocoapods.org/pods/SwiftDate) - Date utilities
+
 ## Usage
 
 ### Bool
