@@ -34,8 +34,8 @@ extension BoolStringFormatter {
 
 true.stringValue(as: .yepNope)	// returns "yep"
 false.stringValue(as: .yepNope)	// returns "nope"
-
 ```
+
 
 ### CGSize
 
@@ -58,11 +58,25 @@ let radians = 90.0.degreesToRadians // returns 1.5707
 let degrees = Double.pi.radiansToDegrees // returns 180
 ```
 
+
+### MKMapSnapshot
+
+Generate a map image with a pin annotation at a given coordinate:
+
+```swift
+let snapshot = MKMapSnapshot(...)
+let coord = CLLocationCoordinate2D(33.132, -117.123)
+
+// Creats the image from the snapshot with the pin annotation at the coordinate.
+let image = snapshot.imageWithAnnotation(atCoordinate: coord)
+```
+
+
 ### NSLayoutConstraint
 
 Constants have been defined for `UILayoutPriority`:
 
-``` swift
+```swift
 /// Use this:
 constraint.priority = .high
 
@@ -87,7 +101,6 @@ let constraint = button.leftAnchor.constraint(equalTo: view.leftAnchor)
 constraint.isActive = true
 self.constraint = constraint
 ```
-
 
 
 ### String
@@ -214,13 +227,44 @@ UIApplication.shared.bundleIdentifier	// "com.seamgen.myGreatApp"
 
 UIApplication.shared.isATSEnabled
 // true if ATS has not been explicitly disable in the info.plist
-
 ```
 
 And provides an easy way to launch the Settings.app by calling:
 
 ```swift
 UIApplication.shared.launchSettingsApp()
+```
+
+
+### UIActivityIndicatorView
+
+Convenience property for starting/stopping animation:
+
+```swift
+let loadingIndicator = UIActivityIndicatorView()
+
+// Use:
+loadingIndicator.animate = self.isLoading
+
+// Instead of:
+if self.isLoading {
+	loadingIndicator.startAnimating()
+} else {
+	loadingIndicator.stopAnimating()
+}
+```
+
+
+### UIButton
+
+Convenience properties for setting common values for `UIControlState.normal`:
+
+```swift
+let button = UIButton()
+button.title = "Submit"
+button.titleColor = .red
+button.attributedTitle = NSAttributedString(...)
+button.image = UIImage(...)
 ```
 
 
@@ -252,7 +296,6 @@ let image = UIImage(...)
 let url = URL(...)
 
 image.writeJPEG(to: url)
-
 ```
 
 Scaling
@@ -310,7 +353,6 @@ stack.addArrangedSubviews(v1, v2, v3)
 // or via an array:
 view.addSubviews(viewsToAdd)
 stack.addArrangedSubviews(viewsToAdd)
-
 ```
 
 
