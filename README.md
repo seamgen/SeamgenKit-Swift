@@ -10,6 +10,21 @@ Other great Cocoapods:
 
 ## Usage
 
+### APNSToken
+
+A wrapper for converting a remote notification device token to a string representation:
+
+```swift
+class AppDelegate {
+	func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+		let token = APNSToken(deviceToken)
+		print(token.string) // prints "790bc691 eea10194 d80cea25 49d2d8ec 0fb439d1 54242532 db4edecf 97f9e092"
+		print(token.data) // prints "32 bytes"
+ 	}
+ }
+
+```
+
 ### Bool
 
 Convert to `String` and `Int` values:
