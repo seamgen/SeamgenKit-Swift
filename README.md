@@ -10,6 +10,13 @@ Other great Cocoapods:
 
 ## Usage
 
+### ImageAdjustableButton
+
+A UIButton subclass that allows positioning of the image view relative to the title label.
+
+![Image](./SeamgenKit/Assets/adjustable_image_button.png)
+
+
 ### APNSToken
 
 A wrapper for converting a remote notification device token to a string representation:
