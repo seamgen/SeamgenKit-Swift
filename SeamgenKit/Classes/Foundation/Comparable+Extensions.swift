@@ -15,7 +15,7 @@ import Foundation
  - parameter max: The maximum value to clamp to.
  - returns: A function that takes a value and returns the value clamped to [min, max].
  */
-public func clamp <T: Comparable> (min: T, _ max: T) -> (T -> T) {
+public func clamp <T: Comparable> (min: T, _ max: T) -> ((T) -> T) {
     assert(min <= max)
     return { value in value < min ? min : value > max ? max : value }
 }
