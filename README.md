@@ -24,7 +24,7 @@ pod 'SeamgenKit', :git => 'https://github.com/seamgen/SeamgenKit-Swift.git'
 
 ## Usage
 
-### ConfigurableOnInit(WithFrame)
+### ConfigurableOnInit(WithFrame) Protocol
 
 Objects confroming to this protocol can be customized at initialization time.  The only requirements is that a class must implement `init()` or `init(frame: CGRect)`.  UIView and NSObject conform to this protocol by default.
 
@@ -38,6 +38,33 @@ let stackView = UIStackView {
     $0.addArrangedSubview(label)
 }
 ```
+
+### EmptyValueRepresentable Protocol
+
+Simplifies working with Optionals in swift.
+
+```swift
+// Default empty values
+let emptyArray: [Double]? = .emptyValue      // []
+let emptyDict: [String: Int]? = .emptyValue  // [:]
+let emptySet: Set<Int>? = .emptyValue        // Set([])
+let emptyString: String? = .emptyValue       // ""
+
+// Check if an object is empty
+emptyArray?.isEmpty     // true
+emptyDict?.isEmpty      // true
+emptySet?.isEmpty       // true
+emptyString?.isEmpty    // true
+
+// Return nil if the object is empty
+let result = emptyString?.nilIfEmpty() // returns nil
+
+
+// Return an empty value if the object is nil
+let nilString: String? = nil
+let emptyResult = nilString.valueOrEmpty    // returns ""
+```
+
 
 ### ImageAdjustableButton
 
