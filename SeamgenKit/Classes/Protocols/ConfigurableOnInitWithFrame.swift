@@ -11,7 +11,7 @@ import UIKit
 
 /// Enables conforming classes to support a block based initializer syntax.
 /// This protocol exists to mark classes as having the basic requirements for the protocol.
-protocol ConfigurableOnInitWithFrame: class {
+public protocol ConfigurableOnInitWithFrame: class {
     
     init(frame: CGRect)
 }
@@ -25,7 +25,7 @@ extension ConfigurableOnInitWithFrame {
     /// Initializes the class using `init()` and then calls the configuration block.
     ///
     /// - Parameter configuration: Called after the object has been initialized to perform customizations.
-    init(frame: CGRect, _ configuration: (Self) -> Void) {
+    public init(frame: CGRect, _ configuration: (Self) -> Void) {
         self.init(frame: frame)
         configuration(self)
     }
