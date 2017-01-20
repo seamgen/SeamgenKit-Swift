@@ -8,7 +8,36 @@ Other great Cocoapods:
 
 * [SwiftDate](https://cocoapods.org/pods/SwiftDate) - Date utilities
 
+
+## Requirements
+
+iOS 9.3 or later.
+
+## Installation
+
+SeamgenKit is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod 'SeamgenKit', :git => 'https://github.com/seamgen/SeamgenKit-Swift.git'
+```
+
 ## Usage
+
+### ConfigurableOnInit(WithFrame)
+
+Objects confroming to this protocol can be customized at initialization time.  The only requirements is that a class must implement `init()` or `init(frame: CGRect)`.  UIView and NSObject conform to this protocol by default.
+
+```swift
+let label = UILabel(frame: .zero) { 
+	$0.text = "Hello World"
+	$0.textAlignment = .center
+}
+
+let stackView = UIStackView {
+    $0.addArrangedSubview(label)
+}
+```
 
 ### ImageAdjustableButton
 
@@ -472,20 +501,6 @@ let url = MapURLBuilder(directionsTo: "123 Fake Street", from: nil, transportTyp
 UIApplication.shared.dial("760-555-1212")
 UIApplication.shared.composeSMS(to: "760-555-1212")
 UIApplication.composeEmail(to: "devs@seamgen.com")
-```
-
-
-## Requirements
-
-iOS 9.3 or later.
-
-## Installation
-
-SeamgenKit is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod 'SeamgenKit', :git => 'https://github.com/seamgen/SeamgenKit-Swift.git'
 ```
 
 ## Author
