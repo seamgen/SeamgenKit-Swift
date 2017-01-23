@@ -81,7 +81,7 @@ extension UICollectionView {
     ///
     /// - Parameter indexPath: The index path of the cell.
     /// - Returns: The cell.
-    public final func dequeueCell<T: UITableViewCell>(for indexPath: IndexPath) -> T where T: ReusableView {
+    public final func dequeueCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T where T: ReusableView {
         return dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as! T
     }
     
