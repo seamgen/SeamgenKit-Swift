@@ -115,5 +115,24 @@ public extension UIApplication {
             return openURL(url)
         }
     }
+    
+    /// Navigates to the system maps app (Maps) to compose an email.
+    ///
+    /// - Parameters:
+    ///   - builder:  The configured map url builder.
+    ///
+    /// - Returns: True if the url was opened.
+    @discardableResult
+    public func openMaps(_ builder: MapURLBuilder) -> Bool {
+        guard let url = builder.url else { return false }
+        
+        if #available(iOS 10.0, tvOS 9.0, *) {
+            let result = canOpenURL(url)
+            open(url, options: [:], completionHandler: nil)
+            return result
+        } else {
+            return openURL(url)
+        }
+    }
 }
 
