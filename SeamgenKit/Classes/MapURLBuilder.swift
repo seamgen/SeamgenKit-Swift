@@ -46,7 +46,7 @@ public enum TransportType {
 
 /// Generartes URLs for use in launching the native maps applications.
 /// See https://developer.apple.com/library/content/featuredarticles/iPhoneURLScheme_Reference/MapLinks/MapLinks.html#//apple_ref/doc/uid/TP40007899-CH5-SW1
-struct MapURLBuilder {
+public struct MapURLBuilder {
     
     /// Initializes an empty URL builder.
     public init() { }
