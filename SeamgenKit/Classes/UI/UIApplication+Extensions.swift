@@ -19,7 +19,7 @@ extension UIApplication {
     
     /// The version of the application from the info.plist (CFBundleShortVersionString)
     public var version: String {
-        return Bundle.main.localizedInfoDictionary!["CFBundleShortVersionString"] as! String
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     }
     
     /// The build number from the info.plist (CFBundleVersionKey)
