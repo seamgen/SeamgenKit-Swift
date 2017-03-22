@@ -51,17 +51,19 @@ extension UIImage {
         let context = UIGraphicsGetCurrentContext()!
         context.setFillColor(color.cgColor)
         
-        var fillMode: CGPathDrawingMode = .fill
+        let fillMode: CGPathDrawingMode
         
         if let borderColor = borderColor?.cgColor, borderWidth > 0 {
             context.setStrokeColor(borderColor)
             context.setLineWidth(borderWidth)
             context.setLineCap(.square)
             fillMode = .fillStroke
+        } else {
+            fillMode = .fill
         }
         
         context.addPath(path)
-        context.drawPath(using: .fillStroke)
+        context.drawPath(using: fillMode)
         
         let image = UIGraphicsGetImageFromCurrentImageContext()!
         
