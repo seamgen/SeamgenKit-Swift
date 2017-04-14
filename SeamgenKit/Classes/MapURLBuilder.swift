@@ -163,12 +163,12 @@ public struct MapURLBuilder {
         }
         
         // Query
-        if let value = query?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+        if let value = query {
             queryItems.append(URLQueryItem(name: "q", value: value))
         }
         
         // Address
-        if let value = address?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+        if let value = address {
             queryItems.append(URLQueryItem(name: "address", value: value))
         }
         
@@ -211,11 +211,11 @@ public struct MapURLBuilder {
         }
         
         // Destination Address
-        if let destinationAddress = destinationAddress?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), !destinationAddress.isEmpty {
+        if let destinationAddress = destinationAddress, !destinationAddress.isEmpty {
             queryItems.append(URLQueryItem(name: "daddr", value: destinationAddress))
             
             // Source Address
-            if let sourceAddress = sourceAddress?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), !sourceAddress.isEmpty {
+            if let sourceAddress = sourceAddress, !sourceAddress.isEmpty {
                 queryItems.append(URLQueryItem(name: "saddr", value: sourceAddress))
             }
             
