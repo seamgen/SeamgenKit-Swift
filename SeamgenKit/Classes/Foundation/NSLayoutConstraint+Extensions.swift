@@ -11,6 +11,18 @@ import Foundation
 
 extension NSLayoutConstraint {
     
+    /// Activates the constraint.
+    public func activated() -> NSLayoutConstraint {
+        self.isActive = true
+        return self
+    }
+}
+
+#if swift(>=4)
+#else
+    
+extension NSLayoutConstraint {
+
     /// Sets the layout priority of the constraint.
     ///
     /// - Parameter priority: The layout priority.
@@ -19,20 +31,12 @@ extension NSLayoutConstraint {
         self.priority = priority
         return self
     }
-    
-    /// Activates the constraint.
-    public func activated() -> NSLayoutConstraint {
-        self.isActive = true
-        return self
-    }
 }
-
-
+    
 extension UILayoutPriority {
-    
-    public static let low = UILayoutPriorityDefaultLow
-    public static let high = UILayoutPriorityDefaultHigh
-    public static let required = UILayoutPriorityRequired
-    public static let fittingSize = UILayoutPriorityFittingSizeLevel
+    public static let low = UILayoutPriority.defaultLow
+    public static let high = UILayoutPriority.defaultHigh
+    public static let required = UILayoutPriority.required
+    public static let fittingSize = UILayoutPriority.fittingSizeLevel
 }
-
+#endif

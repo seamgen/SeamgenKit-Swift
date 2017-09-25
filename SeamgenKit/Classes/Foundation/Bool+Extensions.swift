@@ -53,7 +53,7 @@ public extension Bool {
     ///
     /// - Parameter format: The format of the string.  Defaults to .trueFalse
     /// - Returns: The string representation of the current value.
-    public func stringValue(as format: BoolStringFormat = .trueFalse) -> String {
+    public func stringValue(as format: BoolStringFormat) -> String {
         return format.stringFor(self)
     }
 }
