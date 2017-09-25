@@ -34,9 +34,9 @@ extension NSLayoutConstraint {
 }
     
 extension UILayoutPriority {
-    public static let low = UILayoutPriority.defaultLow
-    public static let high = UILayoutPriority.defaultHigh
-    public static let required = UILayoutPriority.required
-    public static let fittingSize = UILayoutPriority.fittingSizeLevel
+    public static let low = UILayoutPriorityDefaultLow
+    public static let high = UILayoutPriorityDefaultHigh
+    public static let required = UILayoutPriorityRequired
+    public static let fittingSize = UILayoutPriorityFittingSizeLevel
 }
 #endif
