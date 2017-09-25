@@ -34,11 +34,11 @@ public struct BoolStringFormat {
 
 extension BoolStringFormat {
     /// Returns "true" or "false".
-    static let trueFalse = BoolStringFormat(t: "true", f: "false")
+    public static let trueFalse = BoolStringFormat(t: "true", f: "false")
     /// Returns "yes" or "no"
-    static let yesNo = BoolStringFormat(t: "yes", f: "no")
+    public static let yesNo = BoolStringFormat(t: "yes", f: "no")
     /// Returns "t" or "f"
-    static let yN = BoolStringFormat(t: "y", f: "n")
+    public static let yN = BoolStringFormat(t: "y", f: "n")
 }
 
 
@@ -53,7 +53,7 @@ public extension Bool {
     ///
     /// - Parameter format: The format of the string.  Defaults to .trueFalse
     /// - Returns: The string representation of the current value.
-    public func stringValue(as format: BoolStringFormat) -> String {
+    public func stringValue(as format: BoolStringFormat = .trueFalse) -> String {
         return format.stringFor(self)
     }
 }
